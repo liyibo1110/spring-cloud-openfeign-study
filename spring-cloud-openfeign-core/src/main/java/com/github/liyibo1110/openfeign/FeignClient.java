@@ -30,6 +30,8 @@ public @interface FeignClient {
 
     /**
      * 如果存在，这将作为Bean名称（而非name），但不会用作服务ID。
+     * 类似：这个Feign Client在Spring Cloud OpenFeign内部的唯一上下文ID。
+     * 因为两个不同的Feign Client，name可以是一样的，但contextId值不能也一样，即实现同一个服务，配置不一样。
      */
     String contextId() default "";
 
