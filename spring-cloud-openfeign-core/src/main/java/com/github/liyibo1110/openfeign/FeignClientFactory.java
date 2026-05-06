@@ -13,6 +13,10 @@ import java.util.Map;
 /**
  * 用于创建feign类实例的工厂。
  * 会根据客户端名称创建一个Spring ApplicationContext，并从中提取所需的Bean。
+ *
+ * 可以理解为：按contextId管理每个Feign Client专属配置上下文的工厂，
+ * 负责根据不同的contextId拿到不同的client对应的Encoder、Decoder、Contract、Logger、Retryer、ErrorDecoder、RequestInterceptor、Client、Targeter、Capability组件。
+ * 相当于是个按照contextId作为查询key的组件库。
  * @author liyibo
  * @date 2026-05-05 13:46
  */
