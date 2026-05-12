@@ -35,8 +35,7 @@ public class FeignClientFactory extends NamedContextFactory<FeignClientSpecifica
     public <T> T getInstanceWithoutAncestors(String name, Class<T> type) {
         try {
             return BeanFactoryUtils.beanOfType(getContext(name), type);
-        }
-        catch (BeansException ex) {
+        } catch (BeansException ex) {
             return null;
         }
     }
@@ -53,8 +52,7 @@ public class FeignClientFactory extends NamedContextFactory<FeignClientSpecifica
     @SuppressWarnings("unchecked")
     public FeignClientFactory withApplicationContextInitializers(Map<String, Object> applicationContextInitializers) {
         Map<String, ApplicationContextInitializer<GenericApplicationContext>> convertedInitializers = new HashMap<>();
-        applicationContextInitializers.keySet()
-                .forEach(contextId -> convertedInitializers.put(contextId,
+        applicationContextInitializers.keySet().forEach(contextId -> convertedInitializers.put(contextId,
                         (ApplicationContextInitializer<GenericApplicationContext>) applicationContextInitializers.get(contextId)));
         return new FeignClientFactory(convertedInitializers);
     }
